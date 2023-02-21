@@ -134,7 +134,25 @@ abstract class Component<T extends HTMLElement,U extends HTMLElement> {
    abstract configure? (): void;
    abstract renderContent(): void;
 }
+//Project Item Class 
 
+class ProjectItem extends Component<HTMLUListElement,HTMLLIElement>{
+    private project: Project;
+    constructor(hostId: string, project: Project )
+{
+    super('single-project',hostId,false, project.id);
+    this.project  = project;
+    this.configure();
+    this.renderContent()
+}
+configure() {}
+renderContent(){
+    this.element.querySelector('h2')!.textContent=this.project.title;
+    this.element.querySelector('h3')!.textContent=this.project.people.toString();
+    this.element.querySelector('p')!.textContent=this.project.description;
+
+}
+}
 // Project List Class of both Active project and Inactive Projects
 
 class ProjectList extends Component <HTMLDivElement,HTMLElement>{
@@ -181,9 +199,10 @@ class ProjectList extends Component <HTMLDivElement,HTMLElement>{
      const listEl = document.getElementById(listId)! as HTMLUListElement;
      listEl.innerHTML ='';
      for (const prjItem of this.assignedProjects){
-         const listItem = document.createElement('li');
-         listItem.textContent = prjItem.title;
-         listEl.appendChild(listItem)
+      new ProjectItem(this.element.querySelector('ul')!.id,prjItem)
+    //   const listItem = document.createElement('li');
+    //   listItem.textContent = prjItem.title;
+    //   listEl.appendChild(listItem)
      }
     
  }
