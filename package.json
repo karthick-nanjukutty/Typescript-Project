@@ -15,5 +15,13 @@
   "license": "ISC",
   "devDependencies": {
     "lite-server": "^2.6.1"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/karthick-nanjukutty/Typescript-Project.git"
+  },
+  "bugs": {
+    "url": "https://github.com/karthick-nanjukutty/Typescript-Project/issues"
+  },
+  "homepage": "https://github.com/karthick-nanjukutty/Typescript-Project#readme"
 }
